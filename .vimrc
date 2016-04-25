@@ -3,7 +3,6 @@ set nocompatible  " Use Vim settings (versus Vi compatible)
 set autoread      " Automatically reload when a file is changed outside of Vim
 set nobackup      " Do not automatically backup files
 set history=1000  " Remember 1000 lines of command line history
-set clipboard=unnamedplus "use system clipboard
 syntax on "syntax highlight
 filetype plugin indent on
 set tabstop=4 "tab size
