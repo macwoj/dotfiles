@@ -40,10 +40,10 @@ if has("gui_running")
 endif
 
 " jump to the beginning/end of a function that does not have a "{" in the first column
-map [[ ?{
-map [] ?}
-map ][ /{
-map ]] /}
+map [[ ?{<CR>
+map [] ?}<CR>
+map ][ /{<CR>
+map ]] /}<CR>
 
 " Uncomment below to make screen not flash on error
 " set vb t_vb=""
