@@ -5,10 +5,9 @@ set nobackup      " Do not automatically backup files
 set history=1000  " Remember 1000 lines of command line history
 syntax on "syntax highlight
 filetype plugin indent on
-set tabstop=4 "tab size
-set expandtab "tabs to spaces
+" default indentation: 4 spaces, tabs to spaces
+set ts=4 sts=4 sw=4 expandtab
 set autoindent "turn on auto indent
-set shiftwidth=4  "this is the level of autoindent, adjust to taste
 set smartindent   "does the right thing (mostly) in programs
 set ruler "display info on bottom right
 set number "display line numbers
