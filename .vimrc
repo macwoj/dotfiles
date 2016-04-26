@@ -48,11 +48,13 @@ map ]] /}<CR>
 " Uncomment below to make screen not flash on error
 " set vb t_vb=""
 
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-"Plugin 'VundleVim/Vundle.vim'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-scripts/LargeFile'
+Plugin 'mileszs/ack.vim'
 "Plugin 'scrooloose/nerdtree'
-"call vundle#end()
+call vundle#end()
 
 "autocmd vimenter * NERDTree
 
