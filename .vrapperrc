@@ -1,0 +1,7 @@
+set incsearch
+set hlsearch
+set clipboard=unnamedplus
+map [[ ?\{<CR>
+map [] ?}<CR>
+map ][ /\{<CR>
+map ]] /}<CR>
