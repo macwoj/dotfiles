@@ -35,7 +35,7 @@ if has("gui_running")
   elseif has("x11")
     set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
   else
-    set guifont=Courier_New:h20:cDEFAULT
+    set guifont=Courier_New:h16:cDEFAULT
   endif
 endif
 " Shortcut to rapidly toggle `set list` -> /l 
@@ -46,7 +46,7 @@ set listchars=tab:?\ ,eol:¬
 "Invisible character colors 
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
-
+    
 " jump to the beginning/end of a function that does not have a "{" in the first column
 map [[ ?{<CR>
 map [] ?}<CR>
