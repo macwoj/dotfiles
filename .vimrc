@@ -42,7 +42,7 @@ endif
 nmap <leader>l :set list!<CR>
 
 " Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:?\ ,eol:¬
+set listchars=tab:?\ ,eol:Â¬
 "Invisible character colors 
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
@@ -55,14 +55,16 @@ map ]] /}<CR>
 
 " Uncomment below to make screen not flash on error
 " set vb t_vb=""
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-scripts/LargeFile'
-Plugin 'mileszs/ack.vim'
-"Plugin 'scrooloose/nerdtree'
-call vundle#end()
+if has("gui_win32")
+else
+  set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
+  Plugin 'VundleVim/Vundle.vim'
+  Plugin 'vim-scripts/LargeFile'
+  Plugin 'mileszs/ack.vim'
+  "Plugin 'scrooloose/nerdtree'
+  call vundle#end()
+endif
 
 "autocmd vimenter * NERDTree
 
