@@ -38,6 +38,14 @@ if has("gui_running")
     set guifont=Courier_New:h20:cDEFAULT
   endif
 endif
+" Shortcut to rapidly toggle `set list` -> /l 
+nmap <leader>l :set list!<CR>
+
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:?\ ,eol:¬
+"Invisible character colors 
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
 
 " jump to the beginning/end of a function that does not have a "{" in the first column
 map [[ ?{<CR>
