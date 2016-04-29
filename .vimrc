@@ -34,7 +34,7 @@ if has("gui_running")
     set guifont=Courier\ New/20/-1/5/50/0/0/0/1/0
   elseif has("x11")
     set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
-  else
+  elseif has("gui_win32")
     set guifont=Courier_New:h16:cDEFAULT
   endif
 endif
