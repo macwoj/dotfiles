@@ -53,6 +53,24 @@ map [] ?}<CR>
 map ][ /{<CR>
 map ]] /}<CR>
 
+" toggle relative/absolute line numbers map to C-n
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <C-n> :call NumberToggle()<cr>
+
+" switch to absolute line numbers whenever Vim loses focus
+:au FocusLost * :set number
+:au FocusGained * :set relativenumber
+
+" use absolute line numbers when we’re in insert mode and relative numbers when we’re in normal mode
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+
 " Uncomment below to make screen not flash on error
 " set vb t_vb=""
 if has("gui_win32")
