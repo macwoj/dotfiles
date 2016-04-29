@@ -92,6 +92,9 @@ endif
 set background=dark
 colorscheme solarized
 
+" set status line theme
+AirlineTheme solarized dark
+
 "autocmd vimenter * NERDTree
 
 "Information on the following setting can be found with
