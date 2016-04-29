@@ -14,10 +14,14 @@ set number "display line numbers
 set backspace=indent,eol,start "allow backspace
 set hlsearch "highlight search
 set incsearch "incremental search
-colorscheme torte
+
+" solarized
+set background=dark
+colorscheme solarized
+
 set cursorline "highlight current line
 "set current line color
-highlight CursorLine cterm=NONE ctermbg=235 guibg=#262626 
+"highlight CursorLine cterm=NONE ctermbg=235 guibg=#262626 
 set mouse=a          " Enable mouse use for all modes
 " Disable sound/visual bell on errors
 set noerrorbells
@@ -80,6 +84,7 @@ else
   Plugin 'VundleVim/Vundle.vim'
   Plugin 'vim-scripts/LargeFile'
   Plugin 'mileszs/ack.vim'
+  Plugin 'altercation/vim-colors-solarized'
   "Plugin 'scrooloose/nerdtree'
   call vundle#end()
 endif
