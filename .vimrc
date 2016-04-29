@@ -15,6 +15,7 @@ set backspace=indent,eol,start "allow backspace
 set hlsearch "highlight search
 set incsearch "incremental search
 
+set laststatus=2 "show status line
 set cursorline "highlight current line
 "set current line color
 "highlight CursorLine cterm=NONE ctermbg=235 guibg=#262626 
