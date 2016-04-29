@@ -104,6 +104,7 @@ colorscheme solarized
 
 " set status line theme
 let g:airline_theme='solarized'
+let g:airline_powerline_fonts = 1
 "autocmd vimenter * NERDTree
 
 "Information on the following setting can be found with
