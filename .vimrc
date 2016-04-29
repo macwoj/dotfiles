@@ -89,19 +89,18 @@ else
 endif
 
 " solarized
-set background=dark
-colorscheme solarized
 if has("gui_running")
 else
   let g:solarized_termcolors=256
-  let g:solarized_visibility="high"
-  let g:solarized_contrast="high"
   let g:solarized_termtrans=1
-  
   set t_Co=256
-  set background=dark
-  colorscheme solarized
 endif
+
+let g:solarized_visibility="high"
+let g:solarized_contrast="high"
+set background=dark
+colorscheme solarized
+
 " set status line theme
 let g:airline_theme='solarized'
 "autocmd vimenter * NERDTree
