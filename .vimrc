@@ -85,6 +85,7 @@ else
   Plugin 'vim-scripts/LargeFile'
   Plugin 'mileszs/ack.vim'
   Plugin 'altercation/vim-colors-solarized'
+  Plugin 'vim-airline/vim-airline'
   "Plugin 'scrooloose/nerdtree'
   call vundle#end()
 endif
