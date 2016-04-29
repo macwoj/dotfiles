@@ -88,6 +88,9 @@ else
   call vundle#end()
 endif
 
+if has("gui_running")
+  let g:solarized_termcolors=256
+endif
 " solarized
 set background=dark
 colorscheme solarized
