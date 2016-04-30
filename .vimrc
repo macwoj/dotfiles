@@ -27,17 +27,18 @@ set novisualbell
 " set font and text size for gvim
 set t_vb=
 if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Courier\ New\ 20
-  elseif has("gui_photon")
-    set guifont=Courier\ New:s20
-  elseif has("gui_kde")
-    set guifont=Courier\ New/20/-1/5/50/0/0/0/1/0
-  elseif has("x11")
-    set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
-  elseif has("gui_win32")
-    set guifont=Courier_New:h16:cDEFAULT
-  endif
+  set guifont=Liberation\ Mono\ for\ Powerline\ 10 
+"  if has("gui_gtk2")
+"    set guifont=Courier\ New\ 20
+"  elseif has("gui_photon")
+"    set guifont=Courier\ New:s20
+"  elseif has("gui_kde")
+"    set guifont=Courier\ New/20/-1/5/50/0/0/0/1/0
+"  elseif has("x11")
+"    set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
+"  elseif has("gui_win32")
+"    set guifont=Courier_New:h16:cDEFAULT
+"  endif
 endif
 " Shortcut to rapidly toggle `set list` -> /l 
 nmap <leader>l :set list!<CR>
