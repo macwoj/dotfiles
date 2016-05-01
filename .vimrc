@@ -58,6 +58,11 @@ map ]] /}<CR>
 " Uncomment below to make screen not flash on error
 " set vb t_vb=""
 if has("gui_win32")
+  " Thanks for an anonymous guest to provide this generic, better solution
+  set directory=.,$TEMP
+  
+  " This is line I used at first. The above line is better than this
+  set directory=.,d:\temp
   set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
   call vundle#begin('$USERPROFILE/vimfiles/bundle/')
 else
