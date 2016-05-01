@@ -85,7 +85,6 @@ else
   Plugin 'altercation/vim-colors-solarized'
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
-  Plugin 'powerline/fonts'
   "Plugin 'scrooloose/nerdtree'
   call vundle#end()
 endif
