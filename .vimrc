@@ -31,6 +31,8 @@ if has("gui_running")
 	if has("gui_win32")
 		set encoding=utf-8
 		set guifont=DejaVu_Sans_Mono_for_Powerline:h14
+	else
+		set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
 	endif
 endif
 
