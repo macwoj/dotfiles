@@ -40,8 +40,6 @@ if has("gui_running")
 "    set guifont=Courier_New:h16:cDEFAULT
 "  endif
 endif
-" Shortcut to rapidly toggle `set list` -> /l 
-nmap <leader>l :set list!<CR>
 
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:?\ ,eol:¬
