@@ -23,7 +23,7 @@ set mouse=a          " Enable mouse use for all modes
 " Disable sound/visual bell on errors
 set noerrorbells
 set novisualbell
-screen not flash on error
+" screen not flash on error
 set t_vb=
 
 " set text and font
