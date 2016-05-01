@@ -55,24 +55,6 @@ map [] ?}<CR>
 map ][ /{<CR>
 map ]] /}<CR>
 
-" toggle relative/absolute line numbers map to C-n
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-  else
-    set relativenumber
-  endif
-endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
-
-" switch to absolute line numbers whenever Vim loses focus
-:au FocusLost * :set norelativenumber
-:au FocusGained * :set relativenumber
-
-" use absolute line numbers when we’re in insert mode and relative numbers when we’re in normal mode
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
-
 " Uncomment below to make screen not flash on error
 " set vb t_vb=""
 if has("gui_win32")
@@ -85,6 +67,7 @@ else
   Plugin 'altercation/vim-colors-solarized'
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
+  Plugin 'jeffkreeftmeijer/vim-numbertoggle'
   "Plugin 'scrooloose/nerdtree'
   call vundle#end()
 endif
