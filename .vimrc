@@ -58,19 +58,20 @@ map ]] /}<CR>
 " Uncomment below to make screen not flash on error
 " set vb t_vb=""
 if has("gui_win32")
+  set rtp+=~/vimfiles/bundle/Vundle.vim
 else
   set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
-  Plugin 'VundleVim/Vundle.vim'
-  Plugin 'vim-scripts/LargeFile'
-  Plugin 'mileszs/ack.vim'
-  Plugin 'altercation/vim-colors-solarized'
-  Plugin 'vim-airline/vim-airline'
-  Plugin 'vim-airline/vim-airline-themes'
-  Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-  "Plugin 'scrooloose/nerdtree'
-  call vundle#end()
 endif
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-scripts/LargeFile'
+Plugin 'mileszs/ack.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+"Plugin 'scrooloose/nerdtree'
+call vundle#end()
 
 " solarized
 if has("gui_running")
