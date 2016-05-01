@@ -23,22 +23,15 @@ set mouse=a          " Enable mouse use for all modes
 " Disable sound/visual bell on errors
 set noerrorbells
 set novisualbell
-
-" set font and text size for gvim
+screen not flash on error
 set t_vb=
+
+" set text and font
 if has("gui_running")
-  set guifont=Liberation\ Mono\ for\ Powerline\ 10 
-"  if has("gui_gtk2")
-"    set guifont=Courier\ New\ 20
-"  elseif has("gui_photon")
-"    set guifont=Courier\ New:s20
-"  elseif has("gui_kde")
-"    set guifont=Courier\ New/20/-1/5/50/0/0/0/1/0
-"  elseif has("x11")
-"    set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
-"  elseif has("gui_win32")
-"    set guifont=Courier_New:h16:cDEFAULT
-"  endif
+	if has("gui_win32")
+		set encoding=utf-8
+		set guifont=DejaVu_Sans_Mono_for_Powerline:h14
+	endif
 endif
 
 " Use the same symbols as TextMate for tabstops and EOLs
@@ -53,28 +46,24 @@ map [] ?}<CR>
 map ][ /{<CR>
 map ]] /}<CR>
 
-" Uncomment below to make screen not flash on error
-" set vb t_vb=""
+" setup plugins
 if has("gui_win32")
-  " Thanks for an anonymous guest to provide this generic, better solution
+  " Windows swap error fix
   set directory=.,$TEMP
-  
-  " This is line I used at first. The above line is better than this
-  set directory=.,d:\temp
   set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
   call vundle#begin('$USERPROFILE/vimfiles/bundle/')
 else
   set rtp+=~/.vim/bundle/Vundle.vim
   call vundle#begin()
 endif
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-scripts/LargeFile'
-Plugin 'mileszs/ack.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-"Plugin 'scrooloose/nerdtree'
+	Plugin 'VundleVim/Vundle.vim'
+	Plugin 'vim-scripts/LargeFile'
+	Plugin 'mileszs/ack.vim'
+	Plugin 'altercation/vim-colors-solarized'
+	Plugin 'vim-airline/vim-airline'
+	Plugin 'vim-airline/vim-airline-themes'
+	Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+	"Plugin 'scrooloose/nerdtree'
 call vundle#end()
 
 " solarized
