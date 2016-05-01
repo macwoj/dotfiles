@@ -58,11 +58,12 @@ map ]] /}<CR>
 " Uncomment below to make screen not flash on error
 " set vb t_vb=""
 if has("gui_win32")
-  set rtp+=~/vimfiles/bundle/Vundle.vim
+  rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+  vundle#begin('$USERPROFILE/vimfiles/bundle/')
 else
   set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
 endif
-call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/LargeFile'
 Plugin 'mileszs/ack.vim'
