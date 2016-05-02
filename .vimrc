@@ -30,7 +30,7 @@ set t_vb=
 set encoding=utf-8
 if has("gui_running")
 	if has("gui_win32")
-		set guifont=DejaVu_Sans_Mono_for_Powerline:h14
+		set guifont=DejaVu_Sans_Mono_for_Powerline:h12
 	else
 		set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 18
 	endif
