@@ -81,7 +81,7 @@ endif
 
 let g:solarized_visibility="high"
 let g:solarized_contrast="high"
-set background=dark
+set background=light
 colorscheme solarized
 
 " set status line theme
