@@ -43,10 +43,13 @@ highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
     
 " jump to the beginning/end of a function that does not have a "{" in the first column
-map [[ ?{<CR>
-map [] ?}<CR>
-map ][ /{<CR>
-map ]] /}<CR>
+map [[ ?{<CR>w99[{
+map ][ /}<CR>b99]}
+map ]] j0[[%/{<CR>
+map [] k$][%?}<CR>
+
+" use system cliboard
+set clipboard=unnamed
 
 " setup plugins
 if has("gui_win32")
