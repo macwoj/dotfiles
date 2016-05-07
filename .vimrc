@@ -67,7 +67,7 @@ endif
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'vim-scripts/LargeFile'
     Plugin 'mileszs/ack.vim'
-    Pligin 'rking/ag.vim'
+    Plugin 'rking/ag.vim'
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
