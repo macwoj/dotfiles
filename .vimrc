@@ -14,6 +14,8 @@ set number "display line numbers
 set backspace=indent,eol,start "allow backspace
 set hlsearch "highlight search
 set incsearch "incremental search
+" map \ to leader char
+let mapleader = "\\"
 
 set laststatus=2 "show status line
 set cursorline "highlight current line
@@ -72,8 +74,15 @@ endif
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-    "Plugin 'scrooloose/nerdtree'
+    Plugin 'scrooloose/nerdtree'
 call vundle#end()
+
+" open nerdtree with \t
+nmap <leader>t :NERDTreeToggle<CR>
+
+" toggle relative number with \n
+let g:UseNumberToggleTrigger = 0
+nmap <leader>n :call NumberToggle()<CR>
 
 " solarized
 if has("gui_running")
