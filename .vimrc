@@ -75,6 +75,9 @@ endif
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'jeffkreeftmeijer/vim-numbertoggle'
     Plugin 'scrooloose/nerdtree'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'airblade/vim-gitgutter'
+    Plugin 'edkolev/tmuxline'
 call vundle#end()
 
 " open nerdtree with \t
