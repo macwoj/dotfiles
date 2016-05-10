@@ -77,7 +77,7 @@ endif
     Plugin 'scrooloose/nerdtree'
     Plugin 'tpope/vim-fugitive'
     Plugin 'airblade/vim-gitgutter'
-    Plugin 'edkolev/tmuxline.vim'
+"    Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
 
 " open nerdtree with \t
@@ -94,7 +94,6 @@ else
   let g:solarized_termtrans=1
   set t_Co=256
 endif
-
 let g:solarized_visibility="high"
 let g:solarized_contrast="high"
 set background=light
@@ -104,7 +103,18 @@ colorscheme solarized
 let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-"autocmd vimenter * NERDTree
+
+"tmux line
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#W',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '%a',
+      \'y'    : '#W %R'}
+
+"      \,'z'    : '#(hostname)'
+"      \,'c'    : '#W'
 
 "Information on the following setting can be found with
 ":help set
