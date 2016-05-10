@@ -77,7 +77,7 @@ endif
     Plugin 'scrooloose/nerdtree'
     Plugin 'tpope/vim-fugitive'
     Plugin 'airblade/vim-gitgutter'
-    Plugin 'edkolev/tmuxline'
+    Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
 
 " open nerdtree with \t
