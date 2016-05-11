@@ -78,6 +78,8 @@ endif
     Plugin 'scrooloose/nerdtree'
     Plugin 'tpope/vim-fugitive'
     Plugin 'airblade/vim-gitgutter'
+    Plugin 'majutsushi/tagbar'
+    Plugin 'kien/ctrlp.vim'
 "    Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
 
@@ -87,6 +89,9 @@ nmap <leader>t :NERDTreeToggle<CR>
 " toggle relative number with \n
 let g:UseNumberToggleTrigger = 0
 nmap <leader>n :call NumberToggle()<CR>
+
+" toggle tagbar with \b
+nmap <leader>b :TagbarToggle<CR>
 
 " solarized
 if has("gui_running")
