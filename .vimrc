@@ -9,6 +9,7 @@ filetype plugin indent on
 set ts=4 sts=4 sw=4 expandtab
 set autoindent "turn on auto indent
 set smartindent   "does the right thing (mostly) in programs
+set showmatch " Highlight matching braces
 set ruler "display info on bottom right
 set number "display line numbers
 set backspace=indent,eol,start "allow backspace
