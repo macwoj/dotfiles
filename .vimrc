@@ -86,6 +86,7 @@ call vundle#end()
 
 " open nerdtree with \t
 nmap <leader>t :NERDTreeToggle<CR>
+let g:NERDTreeMouseMode=2 "single click will open directory nodes, while a double click will still be required for file nodes
 
 " toggle relative number with \n
 let g:UseNumberToggleTrigger = 0
