@@ -84,6 +84,11 @@ endif
 "    Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
 
+" ctrlp
+let g:ctrlp_max_files = 0 " no file limit
+let g:ctrlp_max_depth = 100 " The maximum depth of a directory tree to recurse into
+let g:ctrlp_follow_symlinks = 1 " follow but ignore looped internal symlinks to avoid duplicates.
+
 " open nerdtree with \t
 nmap <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeMouseMode=2 "single click will open directory nodes, while a double click will still be required for file nodes
