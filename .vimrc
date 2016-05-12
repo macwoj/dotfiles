@@ -80,6 +80,7 @@ endif
     Plugin 'airblade/vim-gitgutter'
     Plugin 'majutsushi/tagbar'
     Plugin 'kien/ctrlp.vim'
+    Plugin 'ivalkeen/vim-ctrlp-tjump'
 "    Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
 
