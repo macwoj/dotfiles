@@ -89,7 +89,12 @@ call vundle#end()
 let g:ctrlp_max_files = 0 " no file limit
 let g:ctrlp_max_depth = 100 " The maximum depth of a directory tree to recurse into
 let g:ctrlp_follow_symlinks = 1 " follow but ignore looped internal symlinks to avoid duplicates.
-
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '00deps\|.*llcalc_work.*\|\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|o|a|d|dd|sundev1|linux)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+"  \ 'dir':  '\v[\/]undev1\|00deps\|.*llcalc_work.*',
 " open nerdtree with \t
 nmap <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeMouseMode=2 "single click will open directory nodes, while a double click will still be required for file nodes
