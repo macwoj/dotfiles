@@ -86,6 +86,9 @@ endif
 call vundle#end()
 
 " ctrlp
+nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>m :CtrlPMixed<CR>
+nmap <leader>r :CtrlPMRU<CR>
 let g:ctrlp_max_files = 0 " no file limit
 let g:ctrlp_max_depth = 100 " The maximum depth of a directory tree to recurse into
 let g:ctrlp_follow_symlinks = 1 " follow but ignore looped internal symlinks to avoid duplicates.
@@ -104,7 +107,7 @@ let g:UseNumberToggleTrigger = 0
 nmap <leader>n :call NumberToggle()<CR>
 
 " toggle tagbar with \b
-nmap <leader>b :TagbarToggle<CR>
+nmap <leader>c :TagbarToggle<CR>
 
 " solarized
 if has("gui_running")
