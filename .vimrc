@@ -107,7 +107,7 @@ else
   let g:solarized_termtrans=1
   set t_Co=256
 endif
-let g:solarized_visibility="high"
+let g:solarized_visibility="low"
 let g:solarized_contrast="high"
 set background=light
 colorscheme solarized
