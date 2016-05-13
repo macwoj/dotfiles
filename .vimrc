@@ -81,6 +81,7 @@ endif
     Plugin 'majutsushi/tagbar'
     Plugin 'kien/ctrlp.vim'
     Plugin 'ivalkeen/vim-ctrlp-tjump'
+    Plugin 'lyuts/vim-rtags'
 "    Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
 
