@@ -29,6 +29,9 @@ set novisualbell
 " screen not flash on error
 set t_vb=
 
+" set make to run the passed in script
+set makeprg=$*
+
 " set text and font
 set encoding=utf-8
 if has("gui_running")
@@ -82,6 +85,8 @@ endif
     Plugin 'kien/ctrlp.vim'
     Plugin 'ivalkeen/vim-ctrlp-tjump'
     Plugin 'lyuts/vim-rtags'
+    Plugin 'tpope/vim-dispatch'
+    Plugin 'tpope/vim-unimpaired'
 "    Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
 
