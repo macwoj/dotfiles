@@ -114,6 +114,8 @@ nmap <leader>n :call NumberToggle()<CR>
 
 " toggle tagbar with \b
 nmap <leader>c :TagbarToggle<CR>
+" make usre that tagbar is fast
+autocmd FileType tagbar setlocal nocursorline nocursorcolumn
 
 " change the default EasyMotion shading to something more readable with
 " Solarized
