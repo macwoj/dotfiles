@@ -29,9 +29,6 @@ set novisualbell
 " screen not flash on error
 set t_vb=
 
-" set make to run the passed in script
-set makeprg=$*
-
 " set text and font
 set encoding=utf-8
 if has("gui_running")
@@ -87,6 +84,9 @@ endif
     Plugin 'lyuts/vim-rtags'
     Plugin 'tpope/vim-dispatch'
     Plugin 'tpope/vim-unimpaired'
+    Plugin 'easymotion/vim-easymotion'
+    Plugin 'haya14busa/incsearch.vim'
+    Plugin 'haya14busa/incsearch-fuzzy.vim'
 "    Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
 
@@ -102,6 +102,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|o|a|d|dd|sundev1|linux)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+let g:ctrlp_working_path_mode = 'rw' "begin finding a root from the current working directory outside of CtrlP
 "  \ 'dir':  '\v[\/]undev1\|00deps\|.*llcalc_work.*',
 " open nerdtree with \t
 nmap <leader>t :NERDTreeToggle<CR>
@@ -114,6 +115,10 @@ nmap <leader>n :call NumberToggle()<CR>
 " toggle tagbar with \b
 nmap <leader>c :TagbarToggle<CR>
 
+" change the default EasyMotion shading to something more readable with
+" Solarized
+hi link EasyMotionTarget2First EasyMotionTarget
+hi link EasyMotionTarget2Second EasyMotionTarget
 " solarized
 if has("gui_running")
 else
