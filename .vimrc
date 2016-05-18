@@ -26,6 +26,7 @@ set mouse=a          " Enable mouse use for all modes
 " Disable sound/visual bell on errors
 set noerrorbells
 set novisualbell
+set ttimeoutlen=50 " increase ESC speed
 " screen not flash on error
 set t_vb=
 
