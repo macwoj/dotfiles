@@ -158,12 +158,16 @@ let g:tmuxline_preset = {
 "      \,'c'    : '#W'
 
 " a.vim
-
-nmap <leader> a :A switches to the header file corresponding to the current file being edited (or vise versa)
-nmap <leader> as :AS splits and switches
-nmap <leader> av :AV vertical splits and switches
-nmap <leader> at :AT new tab and switches
-nmap <leader> an :AN cycles through matches
+" switches to the header file corresponding to the current file being edited (or vise versa)
+nmap <leader>a :A<CR>
+" splits and switches
+nmap <leader>as :AS<CR>
+" vertical splits and switches
+nmap <leader>av :AV<CR>
+" new tab and switches
+nmap <leader>at :AT<CR>
+" cycles through matches
+nmap <leader>an :AN<CR>
 
 "Information on the following setting can be found with
 ":help set
