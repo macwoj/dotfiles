@@ -119,6 +119,12 @@ nmap <leader>c :TagbarToggle<CR>
 " make usre that tagbar is fast
 autocmd FileType tagbar setlocal nocursorline nocursorcolumn
 
+" dispatch shortcut
+nmap <leader>d :Dispatch make -f %<CR>
+
+" toggle word wrap
+nmap <leader>w :set wrap!<CR>
+
 " change the default EasyMotion shading to something more readable with
 " Solarized
 hi link EasyMotionTarget2First EasyMotionTarget
