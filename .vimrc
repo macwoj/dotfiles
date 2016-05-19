@@ -86,8 +86,9 @@ endif
     Plugin 'tpope/vim-dispatch'
     Plugin 'tpope/vim-unimpaired'
     Plugin 'easymotion/vim-easymotion'
-    Plugin 'haya14busa/incsearch.vim'
-    Plugin 'haya14busa/incsearch-fuzzy.vim'
+    Plugin 'vim-scripts/a.vim'
+"    Plugin 'haya14busa/incsearch.vim'
+"    Plugin 'haya14busa/incsearch-fuzzy.vim'
 "    Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
 
@@ -155,6 +156,14 @@ let g:tmuxline_preset = {
 
 "      \,'z'    : '#(hostname)'
 "      \,'c'    : '#W'
+
+" a.vim
+
+nmap <leader> a :A switches to the header file corresponding to the current file being edited (or vise versa)
+nmap <leader> as :AS splits and switches
+nmap <leader> av :AV vertical splits and switches
+nmap <leader> at :AT new tab and switches
+nmap <leader> an :AN cycles through matches
 
 "Information on the following setting can be found with
 ":help set
