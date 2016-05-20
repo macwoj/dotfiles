@@ -18,6 +18,10 @@ set incsearch "incremental search
 " map \ to leader char
 let mapleader = "\\"
 
+" Open new split panes to right and bottom
+set splitbelow
+set splitright
+
 set laststatus=2 "show status line
 set cursorline "highlight current line
 "set current line color
