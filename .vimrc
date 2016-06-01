@@ -91,6 +91,7 @@ endif
     Plugin 'tpope/vim-unimpaired'
     Plugin 'easymotion/vim-easymotion'
     Plugin 'vim-scripts/a.vim'
+    Plugin 'Rip-Rip/clang_complete'
 "    Plugin 'haya14busa/incsearch.vim'
 "    Plugin 'haya14busa/incsearch-fuzzy.vim'
 "    Plugin 'edkolev/tmuxline.vim'
