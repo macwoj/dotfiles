@@ -121,7 +121,7 @@ let g:UseNumberToggleTrigger = 0
 nmap <leader>n :call NumberToggle()<CR>
 
 " toggle tagbar with \b
-nmap <leader>c :TagbarToggle<CR>
+nmap <leader>e :TagbarToggle<CR>
 " make usre that tagbar is fast
 autocmd FileType tagbar setlocal nocursorline nocursorcolumn
 
