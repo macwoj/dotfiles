@@ -110,7 +110,7 @@ let g:ctrlp_max_depth = 100 " The maximum depth of a directory tree to recurse i
 let g:ctrlp_follow_symlinks = 1 " follow but ignore looped internal symlinks to avoid duplicates.
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '00deps\|.*llcalc_work.*\|\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|o|a|d|dd|sundev1|linux)$',
+  \ 'file': '\v\.(exe|so|dll|o|a|d|dd|sundev1|linux|orig)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
 let g:ctrlp_working_path_mode = 'rw' "begin finding a root from the current working directory outside of CtrlP
