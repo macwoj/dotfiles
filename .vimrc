@@ -95,7 +95,7 @@ endif
     Plugin 'tpope/vim-unimpaired'
     Plugin 'easymotion/vim-easymotion'
     Plugin 'vim-scripts/a.vim'
-    Plugin 'Rip-Rip/clang_complete'
+    "Plugin 'Rip-Rip/clang_complete'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'terryma/vim-multiple-cursors'
 "    Plugin 'haya14busa/incsearch.vim'
