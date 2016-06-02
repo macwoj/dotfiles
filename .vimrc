@@ -54,11 +54,9 @@ set listchars=tab:▸\ ,trail:.
 "highlight NonText guifg=#4a4a59
 "highlight SpecialKey guifg=#4a4a59
 
-" jump to the beginning/end of a function that does not have a "{" in the first column
-map [[ ?{<CR>
-map ][ /{<CR>
-map ]] /}<CR>
-map [] ?}<CR>
+" jump to the beginning/end of enclosing scope
+map [[ [{
+map ]] ]}
 
 " use system cliboard
 set clipboard=unnamed
