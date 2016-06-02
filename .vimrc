@@ -15,6 +15,7 @@ set number "display line numbers
 set backspace=indent,eol,start "allow backspace
 set hlsearch "highlight search
 set incsearch "incremental search
+set autowriteall "automatically save any changes made to the buffer before it is hidden
 " map \ to leader char
 let mapleader = "\\"
 
