@@ -189,5 +189,13 @@ nmap <leader>at :AT<CR>
 " cycles through matches
 nmap <leader>an :AN<CR>
 
+"**************************************************************************
+" nerdcommenter
+"**************************************************************************
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
 "Information on the following setting can be found with
 ":help set
