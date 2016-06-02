@@ -90,7 +90,7 @@ endif
     Plugin 'majutsushi/tagbar'
     Plugin 'kien/ctrlp.vim'
     Plugin 'ivalkeen/vim-ctrlp-tjump'
-    Plugin 'lyuts/vim-rtags'
+    "Plugin 'lyuts/vim-rtags'
     Plugin 'tpope/vim-dispatch'
     Plugin 'tpope/vim-unimpaired'
     Plugin 'easymotion/vim-easymotion'
