@@ -61,6 +61,9 @@ map [] k$][%?}<CR>
 
 " use system cliboard
 set clipboard=unnamed
+if has('unnamedplus')
+    set clipboard=unnamed,unnamedplus
+endif
 
 " setup plugins
 if has("gui_win32")
