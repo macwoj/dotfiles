@@ -195,7 +195,9 @@ nmap <leader>an :AN<CR>
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
 " Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
+let g:NERDDefaultAlign = 'start'
+" do not rm spaces since we are commenting at first line
+let g:NERDRemoveExtraSpaces = 0
 
 "Information on the following setting can be found with
 ":help set
