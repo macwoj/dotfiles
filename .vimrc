@@ -54,10 +54,10 @@ set listchars=tab:▸\ ,trail:.
 "highlight SpecialKey guifg=#4a4a59
 
 " jump to the beginning/end of a function that does not have a "{" in the first column
-map [[ ?{<CR>w99[{
-map ][ /}<CR>b99]}
-map ]] j0[[%/{<CR>
-map [] k$][%?}<CR>
+map [[ ?{<CR>
+map ][ /{<CR>
+map ]] /}<CR>
+map [] ?}<CR>
 
 " use system cliboard
 set clipboard=unnamed
