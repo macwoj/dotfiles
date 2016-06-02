@@ -96,6 +96,7 @@ endif
     Plugin 'vim-scripts/a.vim'
     Plugin 'Rip-Rip/clang_complete'
     Plugin 'scrooloose/nerdcommenter'
+    Plugin 'terryma/vim-multiple-cursors'
 "    Plugin 'haya14busa/incsearch.vim'
 "    Plugin 'haya14busa/incsearch-fuzzy.vim'
 "    Plugin 'edkolev/tmuxline.vim'
