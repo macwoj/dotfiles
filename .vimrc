@@ -28,6 +28,11 @@ set cursorline "highlight current line
 "set current line color
 "highlight CursorLine cterm=NONE ctermbg=235 guibg=#262626
 set mouse=a          " Enable mouse use for all modes
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
 " Disable sound/visual bell on errors
 set noerrorbells
 set novisualbell
