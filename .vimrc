@@ -131,7 +131,7 @@ nmap <leader>n :call NumberToggle()<CR>
 " toggle tagbar with \b
 nmap <F8> :TagbarToggle<CR>
 " make usre that tagbar is fast
-autocmd FileType tagbar setlocal nocursorline nocursorcolumn
+autocmd FileType tagbar setlocal nocursorline nocursorcolumn nonumber
 
 " dispatch shortcut
 nmap <leader>d :Dispatch make -f %<CR>
