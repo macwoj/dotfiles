@@ -202,5 +202,12 @@ let g:NERDDefaultAlign = 'start'
 " do not rm spaces since we are commenting at first line
 let g:NERDRemoveExtraSpaces = 0
 
+"**************************************************************************
+" gitgutter
+"**************************************************************************
+" turn off vim-gitgutter by default
+let g:gitgutter_enabled = 0
+
+
 "Information on the following setting can be found with
 ":help set
