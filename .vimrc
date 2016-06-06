@@ -142,8 +142,8 @@ set errorformat+=%DEntering\ dir\ '%f',%XLeaving\ dir
 nmap <leader>w :set wrap!<CR>
 
 " map \gf (global find) to Ag seatch
-nmap <leader>gf :Ag -f --cpp
-vnoremap <leader>gf y:Ag -f --cpp <C-R>"<CR>
+nmap <leader>gf :Ag -f --cpp 
+vnoremap <leader>gf y:Ag -f --cpp '<C-R>"'
 
 " change the default EasyMotion shading to something more readable with
 " Solarized
