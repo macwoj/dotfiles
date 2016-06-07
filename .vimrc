@@ -125,6 +125,12 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_working_path_mode = 'rw' "begin finding a root from the current working directory outside of CtrlP
 "  \ 'dir':  '\v[\/]undev1\|00deps\|.*llcalc_work.*',
+
+" ctrlpfunky
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
 " open nerdtree with \t
 nmap <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeMouseMode=2 "single click will open directory nodes, while a double click will still be required for file nodes
