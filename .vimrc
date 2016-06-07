@@ -101,6 +101,7 @@ endif
     Plugin 'tpope/vim-unimpaired'
     Plugin 'easymotion/vim-easymotion'
     Plugin 'vim-scripts/a.vim'
+    Plugin 'Valloric/YouCompleteMe'
     "Plugin 'Rip-Rip/clang_complete'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'terryma/vim-multiple-cursors'
@@ -172,8 +173,8 @@ let g:airline#extensions#whitespace#enabled = 0             " Do not check for w
 let g:airline#extensions#tabline#enabled = 1                " Display tab bar with buffers
 let g:airline#extensions#tabline#buffer_nr_show = 1         " Display buffer number
 let g:airline#extensions#branch#enabled = 1                 " Enable Git client integration
-let g:airline#extensions#tagbar#enabled = 1                 " Enable Tagbar integration
-let g:airline#extensions#hunks#enabled = 1                  " Enable Git hunks integration
+let g:airline#extensions#tagbar#enabled = 0                 " Enable Tagbar integration
+let g:airline#extensions#hunks#enabled = 0                  " Enable Git hunks integration
 
 "tmux line
 let g:tmuxline_preset = {
