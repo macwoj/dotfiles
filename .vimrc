@@ -96,7 +96,7 @@ endif
 "    Plugin 'vim-scripts/taglist.vim'
     Plugin 'kien/ctrlp.vim'
     Plugin 'ivalkeen/vim-ctrlp-tjump'
-    "Plugin 'lyuts/vim-rtags'
+    Plugin 'lyuts/vim-rtags'
     Plugin 'tpope/vim-dispatch'
     Plugin 'tpope/vim-unimpaired'
     Plugin 'easymotion/vim-easymotion'
@@ -216,6 +216,7 @@ let g:NERDRemoveExtraSpaces = 0
 " turn off vim-gitgutter by default
 let g:gitgutter_enabled = 0
 
-
+" YouCompleteMe
+let g:ycm_filetype_whitelist = { 'cpp': 1, 'hpp': 1, 'h': 1 }
 "Information on the following setting can be found with
 ":help set
