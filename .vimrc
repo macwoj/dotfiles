@@ -95,8 +95,7 @@ endif
 "    Plugin 'xolox/vim-easytags'
 "    Plugin 'vim-scripts/taglist.vim'
     Plugin 'kien/ctrlp.vim'
-    Plugin 'ivalkeen/vim-ctrlp-tjump'
-    Plugin 'vim-scripts/ctrlp-funky'
+    Plugin 'sgur/ctrlp-extensions.vim'
     Plugin 'lyuts/vim-rtags'
     Plugin 'tpope/vim-dispatch'
     Plugin 'tpope/vim-unimpaired'
@@ -115,31 +114,28 @@ call vundle#end()
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>m :CtrlPMixed<CR>
 nmap <leader>r :CtrlPMRU<CR>
+nmap <leader>t :CtrlPBufTag<CR>
 let g:ctrlp_max_files = 0 " no file limit
 let g:ctrlp_max_depth = 100 " The maximum depth of a directory tree to recurse into
 let g:ctrlp_follow_symlinks = 1 " follow but ignore looped internal symlinks to avoid duplicates.
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '00deps\|.*llcalc_work.*\|\.(git|hg|svn)$',
+  \ 'dir':  '.*\.orig\|00deps\|.*llcalc_work.*\|\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|o|a|d|dd|sundev1|linux|orig)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
 let g:ctrlp_working_path_mode = 'rw' "begin finding a root from the current working directory outside of CtrlP
 "  \ 'dir':  '\v[\/]undev1\|00deps\|.*llcalc_work.*',
-
-" ctrlpfunky
-nnoremap <Leader>fu :CtrlPFunky<Cr>
-" narrow the list down with a word under cursor
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+let g:ctrlp_extensions = ['buffertag', 'undo', 'line', 'mixed']
 
 " open nerdtree with \t
-nmap <leader>t :NERDTreeToggle<CR>
+nmap <F5> :NERDTreeToggle<CR>NERDTreeFind<CR>
 let g:NERDTreeMouseMode=2 "single click will open directory nodes, while a double click will still be required for file nodes
 
 " toggle relative number with \n
 let g:UseNumberToggleTrigger = 0
 nmap <leader>n :call NumberToggle()<CR>
 
-" toggle tagbar with \b
+" toggle tagbar with
 nmap <F8> :TagbarToggle<CR>
 " make usre that tagbar is fast
 autocmd FileType tagbar setlocal nocursorline nocursorcolumn nonumber
