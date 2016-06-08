@@ -127,8 +127,8 @@ let g:ctrlp_working_path_mode = 'rw' "begin finding a root from the current work
 "  \ 'dir':  '\v[\/]undev1\|00deps\|.*llcalc_work.*',
 let g:ctrlp_extensions = ['buffertag', 'undo', 'line', 'mixed']
 
-" open nerdtree with \t
-nmap <F5> :NERDTreeToggle<CR>NERDTreeFind<CR>
+" open nerdtree with
+nmap <F5> :NERDTreeFind<CR>
 let g:NERDTreeMouseMode=2 "single click will open directory nodes, while a double click will still be required for file nodes
 
 " toggle relative number with \n
@@ -176,7 +176,7 @@ let g:airline#extensions#whitespace#enabled = 0             " Do not check for w
 let g:airline#extensions#tabline#enabled = 1                " Display tab bar with buffers
 let g:airline#extensions#tabline#buffer_nr_show = 1         " Display buffer number
 let g:airline#extensions#branch#enabled = 1                 " Enable Git client integration
-let g:airline#extensions#tagbar#enabled = 0                 " Enable Tagbar integration
+let g:airline#extensions#tagbar#enabled = 1                 " Enable Tagbar integration
 let g:airline#extensions#hunks#enabled = 0                  " Enable Git hunks integration
 
 "tmux line
@@ -220,6 +220,7 @@ let g:NERDRemoveExtraSpaces = 0
 let g:gitgutter_enabled = 0
 
 " YouCompleteMe
-let g:ycm_filetype_whitelist = { 'cpp': 1, 'python': 1, }
+let g:ycm_filetype_whitelist = { 'cpp': 1, 'python': 1 }
+let g:ycm_confirm_extra_conf = 0
 "Information on the following setting can be found with
 ":help set
