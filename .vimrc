@@ -18,6 +18,8 @@ set incsearch "incremental search
 set autowriteall "automatically save any changes made to the buffer before it is hidden
 " map \ to leader char
 let mapleader = "\\"
+" remove annoying commment inserts
+set formatoptions-=cro
 
 " Open new split panes to right and bottom
 set splitbelow
