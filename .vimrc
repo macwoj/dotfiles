@@ -98,7 +98,7 @@ endif
 "    Plugin 'vim-scripts/taglist.vim'
     Plugin 'kien/ctrlp.vim'
     Plugin 'sgur/ctrlp-extensions.vim'
-    Plugin 'lyuts/vim-rtags'
+"    Plugin 'lyuts/vim-rtags'
     Plugin 'tpope/vim-dispatch'
     Plugin 'tpope/vim-unimpaired'
     Plugin 'easymotion/vim-easymotion'
