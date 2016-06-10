@@ -15,7 +15,7 @@ set number "display line numbers
 set backspace=indent,eol,start "allow backspace
 set hlsearch "highlight search
 set incsearch "incremental search
-set autowriteall "automatically save any changes made to the buffer before it is hidden
+set hidden "allow buffer hiding wihtout saving or prompt
 " map \ to leader char
 let mapleader = "\\"
 " remove annoying commment inserts
