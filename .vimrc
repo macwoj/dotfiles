@@ -93,9 +93,7 @@ endif
     Plugin 'tpope/vim-fugitive'
     Plugin 'airblade/vim-gitgutter'
     Plugin 'majutsushi/tagbar'
-"    Plugin 'xolox/vim-misc'
-"    Plugin 'xolox/vim-easytags'
-"    Plugin 'vim-scripts/taglist.vim'
+    Plugin 'xolox/vim-easytags'
     Plugin 'kien/ctrlp.vim'
     Plugin 'sgur/ctrlp-extensions.vim'
 "    Plugin 'lyuts/vim-rtags'
@@ -104,11 +102,8 @@ endif
     Plugin 'easymotion/vim-easymotion'
     Plugin 'vim-scripts/a.vim'
     Plugin 'Valloric/YouCompleteMe'
-    "Plugin 'Rip-Rip/clang_complete'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'terryma/vim-multiple-cursors'
-"    Plugin 'haya14busa/incsearch.vim'
-"    Plugin 'haya14busa/incsearch-fuzzy.vim'
 "    Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
 
