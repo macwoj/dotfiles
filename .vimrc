@@ -93,6 +93,7 @@ endif
     Plugin 'tpope/vim-fugitive'
     Plugin 'airblade/vim-gitgutter'
     Plugin 'majutsushi/tagbar'
+    Plugin 'xolox/vim-misc'
     Plugin 'xolox/vim-easytags'
     Plugin 'kien/ctrlp.vim'
     Plugin 'sgur/ctrlp-extensions.vim'
