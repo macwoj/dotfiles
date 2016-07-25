@@ -33,7 +33,9 @@ set mouse=a          " Enable mouse use for all modes
 if has("mouse_sgr")
     set ttymouse=sgr
 else
-    set ttymouse=xterm2
+    if !has('nvim')
+        set ttymouse=xterm2
+    endif
 end
 " Disable sound/visual bell on errors
 set noerrorbells
@@ -104,7 +106,8 @@ endif
     Plugin 'easymotion/vim-easymotion'
     Plugin 'tomtom/tcomment_vim'
     Plugin 'vim-scripts/a.vim'
-    Plugin 'Valloric/YouCompleteMe'
+    " Plugin 'Valloric/YouCompleteMe'
+    " Plugin 'Rip-Rip/clang_complete'
     Plugin 'terryma/vim-multiple-cursors'
 "    Plugin 'edkolev/tmuxline.vim'
 call vundle#end()
