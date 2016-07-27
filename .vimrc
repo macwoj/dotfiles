@@ -73,44 +73,35 @@ if has('unnamedplus')
     set clipboard=unnamed,unnamedplus
 endif
 
+call plug#begin('~/.vim/plugged')
 " setup plugins
-if has("gui_win32")
-  " Windows swap error fix
-  set directory=.,$TEMP
-  set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-  call vundle#begin('$USERPROFILE/vimfiles/bundle/')
-else
-  set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
-endif
-    Plugin 'VundleVim/Vundle.vim'
-    Plugin 'vim-scripts/LargeFile'
-    Plugin 'mileszs/ack.vim'
-    Plugin 'rking/ag.vim'
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'airblade/vim-gitgutter'
-    Plugin 'majutsushi/tagbar'
-"    Plugin 'xolox/vim-misc'
-"    Plugin 'xolox/vim-easytags'
-    Plugin 'kien/ctrlp.vim'
-    Plugin 'sgur/ctrlp-extensions.vim'
-"    Plugin 'lyuts/vim-rtags'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'tpope/vim-dispatch'
-    Plugin 'tpope/vim-unimpaired'
-    Plugin 'tpope/vim-repeat'
-    Plugin 'easymotion/vim-easymotion'
-    Plugin 'tomtom/tcomment_vim'
-    Plugin 'vim-scripts/a.vim'
-    " Plugin 'Valloric/YouCompleteMe'
-    " Plugin 'Rip-Rip/clang_complete'
-    Plugin 'terryma/vim-multiple-cursors'
-"    Plugin 'edkolev/tmuxline.vim'
-call vundle#end()
+    Plug 'vim-scripts/LargeFile'
+    Plug 'mileszs/ack.vim'
+    Plug 'rking/ag.vim'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'jeffkreeftmeijer/vim-numbertoggle'
+    Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle','NERDTreeFind'] }
+    Plug 'airblade/vim-gitgutter'
+    Plug 'majutsushi/tagbar'
+"    Plug 'xolox/vim-misc'
+"    Plug 'xolox/vim-easytags'
+    Plug 'kien/ctrlp.vim'
+    Plug 'sgur/ctrlp-extensions.vim'
+"    Plug 'lyuts/vim-rtags'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-dispatch'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'tpope/vim-repeat'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'tomtom/tcomment_vim'
+    Plug 'vim-scripts/a.vim'
+    " Plug 'Valloric/YouCompleteMe'
+    " Plug 'Rip-Rip/clang_complete'
+    Plug 'terryma/vim-multiple-cursors'
+"    Plug 'edkolev/tmuxline.vim'
+call plug#end()
 
 " ctrlp
 nmap <leader>b :CtrlPBuffer<CR>
