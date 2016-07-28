@@ -2,7 +2,7 @@
 set nocompatible  " Use Vim settings (versus Vi compatible)
 set autoread      " Automatically reload when a file is changed outside of Vim
 set nobackup      " Do not automatically backup files
-set history=1000  " Remember 1000 lines of command line history
+set history=10000  " Remember 1000 lines of command line history
 syntax on "syntax highlight
 filetype plugin indent on
 " default indentation: 4 spaces, tabs to spaces
@@ -19,7 +19,7 @@ set hidden "allow buffer hiding wihtout saving or prompt
 " map \ to leader char
 let mapleader = "\\"
 " remove annoying commment inserts
-set formatoptions-=cro
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Open new split panes to right and bottom
 set splitbelow
@@ -97,7 +97,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'easymotion/vim-easymotion'
     Plug 'tomtom/tcomment_vim'
     Plug 'vim-scripts/a.vim'
-    " Plug 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe'
     " Plug 'Rip-Rip/clang_complete'
     Plug 'terryma/vim-multiple-cursors'
 "    Plug 'edkolev/tmuxline.vim'
@@ -111,6 +111,7 @@ nmap <leader>t :CtrlPBufTag<CR>
 let g:ctrlp_max_files = 0 " no file limit
 let g:ctrlp_max_depth = 100 " The maximum depth of a directory tree to recurse into
 let g:ctrlp_follow_symlinks = 1 " follow but ignore looped internal symlinks to avoid duplicates.
+let g:ctrlp_reuse_window = 'netrw\|help\|quickfix'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '.*\.orig\|00deps\|.*llcalc_work.*\|\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|o|a|d|dd|sundev1|linux|orig)$',
