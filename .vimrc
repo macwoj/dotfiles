@@ -139,6 +139,7 @@ nmap <leader>d :Dispatch make -f %<CR>
 " add the path to builds from directories other than current working dir, the
 " build needs to echo this
 set errorformat+=%DEntering\ dir\ '%f',%XLeaving\ dir
+set errorformat+=%Zplink\ error:\ %m
 " toggle word wrap
 nmap <leader>w :set wrap!<CR>
 
