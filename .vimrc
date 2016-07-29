@@ -146,6 +146,14 @@ nmap <leader>w :set wrap!<CR>
 nmap <leader>gf :Ag -f --cpp 
 vnoremap <leader>gf y:Ag -f --cpp '<C-R>"'
 
+" format xml
+nmap <leader>fx :%!xmllint --format -<CR>
+vnoremap <leader>fx :!xmllint --format -<CR>
+
+" format json
+nmap <leader>fj :%!python -m json.tool<CR>
+vnoremap <leader>fj :!python -m json.tool<CR>
+
 " change the default EasyMotion shading to something more readable with
 " Solarized
 hi link EasyMotionTarget2First EasyMotionTarget
