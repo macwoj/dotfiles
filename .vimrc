@@ -97,7 +97,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'easymotion/vim-easymotion'
     Plug 'tomtom/tcomment_vim'
     Plug 'vim-scripts/a.vim'
-    Plug 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe', { 'on':  ['YcmRestartServer']}
     " Plug 'Rip-Rip/clang_complete'
     Plug 'terryma/vim-multiple-cursors'
 "    Plug 'edkolev/tmuxline.vim'
