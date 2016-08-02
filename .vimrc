@@ -72,7 +72,9 @@ set clipboard=unnamed
 if has('unnamedplus')
     set clipboard=unnamed,unnamedplus
 endif
-
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
 call plug#begin('~/.vim/plugged')
 " setup plugins
     Plug 'vim-scripts/LargeFile'
@@ -97,7 +99,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'easymotion/vim-easymotion'
     Plug 'tomtom/tcomment_vim'
     Plug 'vim-scripts/a.vim'
-    Plug 'Valloric/YouCompleteMe', { 'on':  ['YcmRestartServer']}
+    Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
     " Plug 'Rip-Rip/clang_complete'
     Plug 'terryma/vim-multiple-cursors'
 "    Plug 'edkolev/tmuxline.vim'
@@ -222,14 +224,28 @@ let g:NERDRemoveExtraSpaces = 0
 " turn off vim-gitgutter by default
 let g:gitgutter_enabled = 0
 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
+" Close the documentation window when completion is done
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = ['buffer']
+let g:deoplete#sources.cpp = ['buffer', 'tag']
+
 " YouCompleteMe
-let g:ycm_filetype_whitelist = { 'cpp': 1, 'python': 1 }
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-nmap <F2> :YcmCompleter GoTo<CR>
-nmap <F3> :YcmCompleter GoToDeclaration<CR>
-nmap <F4> :YcmCompleter GoToDefinition<CR>
+" let g:ycm_filetype_whitelist = { 'cpp': 1, 'python': 1 }
+" let g:ycm_confirm_extra_conf = 0
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+" nmap <F2> :YcmCompleter GoTo<CR>
+" nmap <F3> :YcmCompleter GoToDeclaration<CR>
+" nmap <F4> :YcmCompleter GoToDefinition<CR>
 "Information on the following setting can be found with
 ":help set
