@@ -91,7 +91,6 @@ call plug#begin('~/.vim/plugged')
 "    Plug 'xolox/vim-easytags'
     Plug 'kien/ctrlp.vim'
     Plug 'sgur/ctrlp-extensions.vim'
-"    Plug 'lyuts/vim-rtags'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-dispatch'
     Plug 'tpope/vim-unimpaired'
@@ -99,9 +98,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'easymotion/vim-easymotion'
     Plug 'tomtom/tcomment_vim'
     Plug 'vim-scripts/a.vim'
-    Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-    " Plug 'Rip-Rip/clang_complete'
+    Plug 'Valloric/YouCompleteMe', { 'on': ['YcmRestartServer'] }
+"     Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+"     Plug 'Rip-Rip/clang_complete'
+"    Plug 'lyuts/vim-rtags'
     Plug 'terryma/vim-multiple-cursors'
+    " Plug 'vim-scripts/genutils'
+    " Plug 'vim-scripts/multvals.vim'
+    " Plug 'vim-scripts/tagselect'
 "    Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
@@ -156,6 +160,9 @@ vnoremap <leader>fx :!xmllint --format -<CR>
 " format json
 nmap <leader>fj :%!python -m json.tool<CR>
 vnoremap <leader>fj :!python -m json.tool<CR>
+
+" update ctags file
+nmap <leader>ut :!ctags -R --c++-kinds=+p --fields=+iaSl --extra=+q --links=yes .<CR>
 
 " change the default EasyMotion shading to something more readable with
 " Solarized
@@ -224,28 +231,35 @@ let g:NERDRemoveExtraSpaces = 0
 " turn off vim-gitgutter by default
 let g:gitgutter_enabled = 0
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
-" Close the documentation window when completion is done
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+" """""""" Use deoplete.
+" let g:deoplete#enable_at_startup = 1
+" if !exists('g:deoplete#omni#input_patterns')
+"     let g:deoplete#omni#input_patterns = {}
+" endif
+" " Close the documentation window when completion is done
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" " deoplete tab-complete
+" inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+" let g:deoplete#sources = {}
+" let g:deoplete#sources._ = ['buffer']
+" " let g:deoplete#sources.cpp = ['buffer', 'tag','clang_complete']
+" let g:deoplete#sources.cpp = ['buffer', 'tag']
+" let deoplete#tag#cache_limit_size = 100000000
+"
+" """""""" clang_complete
+" let g:clang_complete_auto = 0
+" let g:clang_auto_select = 0
+" let g:clang_omnicppcomplete_compliance = 0
+" let g:clang_make_default_keymappings = 0
+" let g:clang_library_path='/home/mwojton/work/linux/lib/'
 
-let g:deoplete#sources = {}
-let g:deoplete#sources._ = ['buffer']
-let g:deoplete#sources.cpp = ['buffer', 'tag']
-
-" YouCompleteMe
-" let g:ycm_filetype_whitelist = { 'cpp': 1, 'python': 1 }
-" let g:ycm_confirm_extra_conf = 0
-" let g:ycm_autoclose_preview_window_after_insertion = 1
-" let g:ycm_autoclose_preview_window_after_completion = 1
+"""""""" YouCompleteMe
+let g:ycm_filetype_whitelist = { 'cpp': 1, 'python': 1 }
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
 " let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-" nmap <F2> :YcmCompleter GoTo<CR>
-" nmap <F3> :YcmCompleter GoToDeclaration<CR>
-" nmap <F4> :YcmCompleter GoToDefinition<CR>
+nmap <F2> :YcmCompleter GoTo<CR>
+nmap <F3> :YcmCompleter GoToDeclaration<CR>
+nmap <F4> :YcmCompleter GoToDefinition<CR>
 "Information on the following setting can be found with
 ":help set
