@@ -21,6 +21,9 @@ let mapleader = "\\"
 " remove annoying commment inserts
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" paste over selection without losing yank
+vnoremap p "_dP
+
 " Open new split panes to right and bottom
 set splitbelow
 set splitright
