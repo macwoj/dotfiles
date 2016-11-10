@@ -282,9 +282,9 @@ nmap <leader>ut :atags#generate()<CR>
 let g:atags_build_commands_list = [
     \"ctags -R --c++-kinds=+p --fields=+iaSl --extra=+q --links=yes --python-kinds=-i -f tags.tmp",
     \"awk 'length($0) < 400' tags.tmp > tags",
-    \"rm tags.tmp"
-    \"find . -iname *.c -iname *.cc -iname *.hpp -iname *.h -iname *.cpp >.cscopelist.tmp"
-    \"cscope -q -R -b -i .cscopelist.tmp"
+    \"rm tags.tmp",
+    \"find . -iname *.c -iname *.cc -iname *.hpp -iname *.h -iname *.cpp >.cscopelist.tmp",
+    \"cscope -q -R -b -i .cscopelist.tmp",
     \"rm .cscopelist.tmp"
     \]
 
