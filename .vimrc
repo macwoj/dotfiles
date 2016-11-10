@@ -277,7 +277,7 @@ nmap <F4> :YcmCompleter GoToDefinition<CR>
 " Generate tags everytime a file is being written.
 autocmd BufWritePost * call atags#generate()
 " update ctags file
-nmap <leader>ut :atags#generate()<CR>
+nmap <leader>ut :call atags#generate()<CR>
 "
 let g:atags_build_commands_list = [
     \"ctags -R --c++-kinds=+p --fields=+iaSl --extra=+q --links=yes --python-kinds=-i -f tags.tmp",
