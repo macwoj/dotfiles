@@ -24,6 +24,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " paste over selection without losing yank
 vnoremap p "_dP
 
+" Don't lose selection when shifting sidewards
+xnoremap <  <gv
+xnoremap >  >gv
+
 " Open new split panes to right and bottom
 set splitbelow
 set splitright
@@ -110,6 +114,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'vim-scripts/multvals.vim'
     " Plug 'vim-scripts/tagselect'
 "    Plug 'edkolev/tmuxline.vim'
+    Plug 'fntlnz/atags.vim'
 call plug#end()
 
 " ctrlp
@@ -164,8 +169,6 @@ vnoremap <leader>fx :!xmllint --format -<CR>
 nmap <leader>fj :%!python -m json.tool<CR>
 vnoremap <leader>fj :!python -m json.tool<CR>
 
-" update ctags file
-nmap <leader>ut :!ctags -R --c++-kinds=+p --fields=+iaSl --extra=+q --links=yes .<CR>
 
 " change the default EasyMotion shading to something more readable with
 " Solarized
@@ -260,9 +263,30 @@ let g:gitgutter_enabled = 0
 let g:ycm_filetype_whitelist = { 'cpp': 1, 'python': 1 }
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_python_binary_path = 'bbpy2.7'
+
 " let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 nmap <F2> :YcmCompleter GoTo<CR>
 nmap <F3> :YcmCompleter GoToDeclaration<CR>
 nmap <F4> :YcmCompleter GoToDefinition<CR>
+
+"**************************************************************************
+" atags.vim
+"**************************************************************************
+" Generate tags everytime a file is being written.
+autocmd BufWritePost * call atags#generate()
+" update ctags file
+nmap <leader>ut :atags#generate()<CR>
+"
+let g:atags_build_commands_list = [
+    \"ctags -R --c++-kinds=+p --fields=+iaSl --extra=+q --links=yes --python-kinds=-i -f tags.tmp",
+    \"awk 'length($0) < 400' tags.tmp > tags",
+    \"rm tags.tmp"
+    \"find . -iname *.c -iname *.cc -iname *.hpp -iname *.h -iname *.cpp >.cscopelist.tmp"
+    \"cscope -q -R -b -i .cscopelist.tmp"
+    \"rm .cscopelist.tmp"
+    \]
+
 "Information on the following setting can be found with
 ":help set

@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir ~/.config/nvim/
+mkdir -p ~/.config/nvim/
 cp .vimrc ~/
 cp .vimrc ~/.config/nvim/init.vim
 cp .vimrc ~/.vimmrc
