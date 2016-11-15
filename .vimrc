@@ -79,6 +79,7 @@ set clipboard=unnamed
 if has('unnamedplus')
     set clipboard=unnamed,unnamedplus
 endif
+
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
@@ -105,7 +106,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'easymotion/vim-easymotion'
     Plug 'tomtom/tcomment_vim'
     Plug 'vim-scripts/a.vim'
-    Plug 'Valloric/YouCompleteMe', { 'on': ['YcmRestartServer'] }
+    Plug 'Valloric/YouCompleteMe', { 'on': [] }
 "     Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 "     Plug 'Rip-Rip/clang_complete'
 "    Plug 'lyuts/vim-rtags'
@@ -114,7 +115,9 @@ call plug#begin('~/.vim/plugged')
     " Plug 'vim-scripts/multvals.vim'
     " Plug 'vim-scripts/tagselect'
 "    Plug 'edkolev/tmuxline.vim'
+if has('nvim')
     Plug 'fntlnz/atags.vim'
+endif
 call plug#end()
 
 " ctrlp
@@ -274,19 +277,28 @@ nmap <F4> :YcmCompleter GoToDefinition<CR>
 "**************************************************************************
 " atags.vim
 "**************************************************************************
+if has('nvim')
 " Generate tags everytime a file is being written.
 autocmd BufWritePost * call atags#generate()
 " update ctags file
 nmap <leader>ut :call atags#generate()<CR>
-"
+
+" command StartIDE atags#generate()
+
+" commmand to start indexers and generate new tags
+function! s:StartIDE()
+    call atags#generate()
+    call plug#load('YouCompleteMe')
+endfunction
+command StartIDE call s:StartIDE()
+
 let g:atags_build_commands_list = [
     \"ctags -R --c++-kinds=+p --fields=+iaSl --extra=+q --links=yes --python-kinds=-i -f tags.tmp",
-    \"awk 'length($0) < 400' tags.tmp > tags",
-    \"rm tags.tmp",
-    \"find . -iname *.c -iname *.cc -iname *.hpp -iname *.h -iname *.cpp >.cscopelist.tmp",
+    \"mv -f tags.tmp tags",
+    \"find . -name \"*.c\" -o -name \"*.cc\" -o -name \"*.hpp\" -o -name \"*.h\" -o -name \"*.cpp\" >.cscopelist.tmp",
     \"cscope -q -R -b -i .cscopelist.tmp",
     \"rm .cscopelist.tmp"
     \]
-
+endif
 "Information on the following setting can be found with
 ":help set
