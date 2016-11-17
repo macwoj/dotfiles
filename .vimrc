@@ -95,8 +95,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle','NERDTreeFind'] }
     Plug 'airblade/vim-gitgutter'
     Plug 'majutsushi/tagbar'
-"    Plug 'xolox/vim-misc'
-"    Plug 'xolox/vim-easytags'
     Plug 'kien/ctrlp.vim'
     Plug 'sgur/ctrlp-extensions.vim'
     Plug 'tpope/vim-fugitive'
@@ -107,13 +105,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'tomtom/tcomment_vim'
     Plug 'vim-scripts/a.vim'
     Plug 'Valloric/YouCompleteMe', { 'on': [] }
-"     Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-"     Plug 'Rip-Rip/clang_complete'
-"    Plug 'lyuts/vim-rtags'
+    Plug 'lyuts/vim-rtags', { 'on': [] }
+    Plug 'ronakg/quickr-cscope.vim', { 'on': [] }
     Plug 'terryma/vim-multiple-cursors'
-    " Plug 'vim-scripts/genutils'
-    " Plug 'vim-scripts/multvals.vim'
-    " Plug 'vim-scripts/tagselect'
 "    Plug 'edkolev/tmuxline.vim'
 if has('nvim')
     Plug 'fntlnz/atags.vim'
@@ -275,6 +269,19 @@ nmap <F3> :YcmCompleter GoToDeclaration<CR>
 nmap <F4> :YcmCompleter GoToDefinition<CR>
 
 "**************************************************************************
+" quickr-cscope.vim.vim
+"**************************************************************************
+let g:quickr_cscope_keymaps = 0
+nmap <leader>cs <plug>(quickr_cscope_symbols)
+nmap <leader>cg <plug>(quickr_cscope_global)
+nmap <leader>cc <plug>(quickr_cscope_callers)
+nmap <leader>cf <plug>(quickr_cscope_files)
+nmap <leader>ci <plug>(quickr_cscope_includes)
+nmap <leader>ct <plug>(quickr_cscope_text)
+nmap <leader>ce <plug>(quickr_cscope_egrep)
+nmap <leader>cd <plug>(quickr_cscope_functions)
+
+"**************************************************************************
 " atags.vim
 "**************************************************************************
 if has('nvim')
@@ -289,6 +296,9 @@ nmap <leader>ut :call atags#generate()<CR>
 function! s:StartIDE()
     call atags#generate()
     call plug#load('YouCompleteMe')
+    call plug#load('quickr-cscope.vim')
+    " call jobstart('startRtags.sh; rc .')
+    " call plug#load('vim-rtags')
 endfunction
 command StartIDE call s:StartIDE()
 
