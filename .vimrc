@@ -95,7 +95,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle','NERDTreeFind'] }
     Plug 'airblade/vim-gitgutter'
     Plug 'majutsushi/tagbar'
-    Plug 'kien/ctrlp.vim'
+    Plug 'ctrlpvim/ctrlp.vim'
     Plug 'sgur/ctrlp-extensions.vim'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-dispatch'
@@ -286,17 +286,22 @@ nmap <leader>cd <plug>(quickr_cscope_functions)
 "**************************************************************************
 if has('nvim')
 " Generate tags everytime a file is being written.
-autocmd BufWritePost * call atags#generate()
-" update ctags file
-nmap <leader>ut :call atags#generate()<CR>
+autocmd BufWritePost * call GenerateATags()
 
 " command StartIDE atags#generate()
 
+function! GenerateATags()
+    call atags#generate()
+    call plug#load('quickr-cscope.vim')
+endfunction
+
+" update ctags file
+nmap <leader>ut :call GenerateATags()<CR>
+
 " commmand to start indexers and generate new tags
 function! s:StartIDE()
-    call atags#generate()
+    call GenerateATags()
     call plug#load('YouCompleteMe')
-    call plug#load('quickr-cscope.vim')
     " call jobstart('startRtags.sh; rc .')
     " call plug#load('vim-rtags')
 endfunction
