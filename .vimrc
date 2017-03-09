@@ -34,8 +34,7 @@ set splitright
 
 set laststatus=2 "show status line
 set cursorline "highlight current line
-"set current line color
-"highlight CursorLine cterm=NONE ctermbg=235 guibg=#262626
+set colorcolumn=80,120 "vertical line
 set mouse=a          " Enable mouse use for all modes
 if has("mouse_sgr")
     set ttymouse=sgr
@@ -85,6 +84,7 @@ function! DoRemote(arg)
 endfunction
 call plug#begin('~/.vim/plugged')
 " setup plugins
+    Plug 'nathanaelkane/vim-indent-guides'
     Plug 'vim-scripts/LargeFile'
     Plug 'mileszs/ack.vim'
     Plug 'rking/ag.vim'
@@ -108,11 +108,16 @@ call plug#begin('~/.vim/plugged')
     Plug 'lyuts/vim-rtags', { 'on': [] }
     Plug 'ronakg/quickr-cscope.vim', { 'on': [] }
     Plug 'terryma/vim-multiple-cursors'
+    Plug 'chrisbra/csv.vim', {'for': 'csv' }
 "    Plug 'edkolev/tmuxline.vim'
 if has('nvim')
     Plug 'fntlnz/atags.vim'
 endif
 call plug#end()
+
+" easymotion
+map 8 \\b
+map 9 \\w
 
 " ctrlp
 nmap <leader>b :CtrlPBuffer<CR>
