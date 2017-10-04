@@ -16,6 +16,7 @@ set backspace=indent,eol,start "allow backspace
 set hlsearch "highlight search
 set incsearch "incremental search
 set hidden "allow buffer hiding wihtout saving or prompt
+set shortmess=a "rm the press enter message on startup if theres something wrong with setup
 " map \ to leader char
 let mapleader = "\\"
 " remove annoying commment inserts
