@@ -63,11 +63,6 @@ endif
 " Use the same symbols as TextMate for tabstops and EOLs
 set list
 set listchars=tab:▸\ ,trail:.
-" \l toggles showing eol chars
-" nmap <leader>l :set list!<CR>
-" Invisible character colors
-"highlight NonText guifg=#4a4a59
-"highlight SpecialKey guifg=#4a4a59
 
 " jump to the beginning/end of enclosing scope
 map [[ [{
@@ -82,12 +77,18 @@ endif
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
-call plug#begin('~/.vim/plugged')
+
 " setup plugins
+if has("gui_win32")
+  " Windows swap error fix
+  set directory=.,$TEMP
+  call plug#begin('~/vimfiles/plugged')
+else
+  call plug#begin('~/.vim/plugged')
+endif
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'vim-scripts/LargeFile'
     Plug 'mileszs/ack.vim'
-    Plug 'rking/ag.vim'
     Plug 'altercation/vim-colors-solarized'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -103,10 +104,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-repeat'
     Plug 'easymotion/vim-easymotion'
     Plug 'tomtom/tcomment_vim'
-    Plug 'vim-scripts/a.vim'
     Plug 'Valloric/YouCompleteMe', { 'on': [] }
-    Plug 'lyuts/vim-rtags', { 'on': [] }
-    Plug 'ronakg/quickr-cscope.vim', { 'on': [] }
     Plug 'terryma/vim-multiple-cursors'
     Plug 'chrisbra/csv.vim', {'for': 'csv' }
 "    Plug 'edkolev/tmuxline.vim'
@@ -114,10 +112,6 @@ if has('nvim')
     Plug 'fntlnz/atags.vim'
 endif
 call plug#end()
-
-" easymotion
-map 8 \\b
-map 9 \\w
 
 " ctrlp
 nmap <leader>b :CtrlPBuffer<CR>
@@ -158,10 +152,6 @@ set errorformat+=%DEntering\ dir\ '%f',%XLeaving\ dir
 set errorformat+=%Zplink\ error:\ %m
 " toggle word wrap
 nmap <leader>w :set wrap!<CR>
-
-" map \gf (global find) to Ag seatch
-nmap <leader>gf :Ag -f --cpp 
-vnoremap <leader>gf y:Ag -f --cpp '<C-R>"'
 
 " format xml
 nmap <leader>fx :%!xmllint --format -<CR>
@@ -211,55 +201,11 @@ let g:tmuxline_preset = {
 "      \,'z'    : '#(hostname)'
 "      \,'c'    : '#W'
 
-" a.vim
-" switches to the header file corresponding to the current file being edited (or vise versa)
-nmap <leader>a :A<CR>
-" splits and switches
-nmap <leader>as :AS<CR>
-" vertical splits and switches
-nmap <leader>av :AV<CR>
-" new tab and switches
-nmap <leader>at :AT<CR>
-" cycles through matches
-nmap <leader>an :AN<CR>
-
-"**************************************************************************
-" nerdcommenter
-"**************************************************************************
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'start'
-" do not rm spaces since we are commenting at first line
-let g:NERDRemoveExtraSpaces = 0
-
 "**************************************************************************
 " gitgutter
 "**************************************************************************
 " turn off vim-gitgutter by default
 let g:gitgutter_enabled = 0
-
-" """""""" Use deoplete.
-" let g:deoplete#enable_at_startup = 1
-" if !exists('g:deoplete#omni#input_patterns')
-"     let g:deoplete#omni#input_patterns = {}
-" endif
-" " Close the documentation window when completion is done
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" " deoplete tab-complete
-" inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
-" let g:deoplete#sources = {}
-" let g:deoplete#sources._ = ['buffer']
-" " let g:deoplete#sources.cpp = ['buffer', 'tag','clang_complete']
-" let g:deoplete#sources.cpp = ['buffer', 'tag']
-" let deoplete#tag#cache_limit_size = 100000000
-"
-" """""""" clang_complete
-" let g:clang_complete_auto = 0
-" let g:clang_auto_select = 0
-" let g:clang_omnicppcomplete_compliance = 0
-" let g:clang_make_default_keymappings = 0
-" let g:clang_library_path='/home/mwojton/work/linux/lib/'
 
 """""""" YouCompleteMe
 let g:ycm_filetype_whitelist = { 'cpp': 1, 'python': 1 }
@@ -274,19 +220,6 @@ nmap <F3> :YcmCompleter GoToDeclaration<CR>
 nmap <F4> :YcmCompleter GoToDefinition<CR>
 
 "**************************************************************************
-" quickr-cscope.vim.vim
-"**************************************************************************
-let g:quickr_cscope_keymaps = 0
-nmap <leader>cs <plug>(quickr_cscope_symbols)
-nmap <leader>cg <plug>(quickr_cscope_global)
-nmap <leader>cc <plug>(quickr_cscope_callers)
-nmap <leader>cf <plug>(quickr_cscope_files)
-nmap <leader>ci <plug>(quickr_cscope_includes)
-nmap <leader>ct <plug>(quickr_cscope_text)
-nmap <leader>ce <plug>(quickr_cscope_egrep)
-nmap <leader>cd <plug>(quickr_cscope_functions)
-
-"**************************************************************************
 " atags.vim
 "**************************************************************************
 if has('nvim')
@@ -297,7 +230,6 @@ autocmd BufWritePost * call GenerateATags()
 
 function! GenerateATags()
     call atags#generate()
-    call plug#load('quickr-cscope.vim')
 endfunction
 
 " update ctags file
@@ -314,10 +246,7 @@ command StartIDE call s:StartIDE()
 
 let g:atags_build_commands_list = [
     \"ctags -R --c++-kinds=+p --fields=+iaSl --extra=+q --links=yes --python-kinds=-i -f tags.tmp",
-    \"mv -f tags.tmp tags",
-    \"find . -name \"*.c\" -o -name \"*.cc\" -o -name \"*.hpp\" -o -name \"*.h\" -o -name \"*.cpp\" >.cscopelist.tmp",
-    \"cscope -q -R -b -i .cscopelist.tmp",
-    \"rm .cscopelist.tmp"
+    \"mv -f tags.tmp tags"
     \]
 endif
 "Information on the following setting can be found with
