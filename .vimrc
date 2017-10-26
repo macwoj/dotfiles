@@ -109,7 +109,7 @@ endif
     Plug 'tpope/vim-repeat'
     Plug 'easymotion/vim-easymotion'
     Plug 'tomtom/tcomment_vim'
-    Plug 'Valloric/YouCompleteMe', { 'on': [] ,'do': './install.py --all'}
+    Plug 'Valloric/YouCompleteMe', { 'on': [] ,'do': './install.py --clang-completer'}
     Plug 'terryma/vim-multiple-cursors'
     Plug 'chrisbra/csv.vim', {'for': 'csv' }
 "    Plug 'edkolev/tmuxline.vim'
