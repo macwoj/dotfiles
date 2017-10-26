@@ -79,6 +79,10 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+" python setup
+let g:python_host_prog = '~/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
+
 " setup plugins
 if has("gui_win32")
   " Windows swap error fix
@@ -105,12 +109,12 @@ endif
     Plug 'tpope/vim-repeat'
     Plug 'easymotion/vim-easymotion'
     Plug 'tomtom/tcomment_vim'
-    Plug 'Valloric/YouCompleteMe', { 'on': [] }
+    Plug 'Valloric/YouCompleteMe', { 'on': [] ,'do': './install.py --all'}
     Plug 'terryma/vim-multiple-cursors'
     Plug 'chrisbra/csv.vim', {'for': 'csv' }
 "    Plug 'edkolev/tmuxline.vim'
 if has('nvim')
-    Plug 'fntlnz/atags.vim'
+    Plug 'fntlnz/atags.vim', { 'on': [] }
 endif
 call plug#end()
 
@@ -223,11 +227,6 @@ nmap <F4> :YcmCompleter GoToDefinition<CR>
 " atags.vim
 "**************************************************************************
 if has('nvim')
-" Generate tags everytime a file is being written.
-autocmd BufWritePost * call GenerateATags()
-
-" command StartIDE atags#generate()
-
 function! GenerateATags()
     call atags#generate()
 endfunction
@@ -237,10 +236,11 @@ nmap <leader>ut :call GenerateATags()<CR>
 
 " commmand to start indexers and generate new tags
 function! s:StartIDE()
+    call plug#load('atags.vim')
+    " Generate tags everytime a file is being written.
+    autocmd BufWritePost * call GenerateATags()
     call GenerateATags()
     call plug#load('YouCompleteMe')
-    " call jobstart('startRtags.sh; rc .')
-    " call plug#load('vim-rtags')
 endfunction
 command StartIDE call s:StartIDE()
 
@@ -249,5 +249,3 @@ let g:atags_build_commands_list = [
     \"mv -f tags.tmp tags"
     \]
 endif
-"Information on the following setting can be found with
-":help set
