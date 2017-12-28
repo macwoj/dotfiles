@@ -113,9 +113,7 @@ endif
     Plug 'terryma/vim-multiple-cursors'
     Plug 'chrisbra/csv.vim', {'for': 'csv' }
 "    Plug 'edkolev/tmuxline.vim'
-if has('nvim')
-    Plug 'fntlnz/atags.vim', { 'on': [] }
-endif
+    Plug 'craigemery/vim-autotag'
 call plug#end()
 
 " ctrlp
@@ -178,8 +176,6 @@ else
   let g:solarized_termtrans=1
   set t_Co=256
 endif
-let g:solarized_visibility="low"
-let g:solarized_contrast="high"
 set background=light
 colorscheme solarized
 
@@ -216,7 +212,7 @@ let g:gitgutter_enabled = 0
 let g:ycm_filetype_whitelist = { 'cpp': 1, 'python': 1 }
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_show_diagnostics_ui = 0
+let g:ycm_show_diagnostics_ui = 1
 
 " let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 nmap <F2> :YcmCompleter GoTo<CR>
@@ -224,28 +220,17 @@ nmap <F3> :YcmCompleter GoToDeclaration<CR>
 nmap <F4> :YcmCompleter GoToDefinition<CR>
 
 "**************************************************************************
-" atags.vim
+" StartIDE
 "**************************************************************************
-if has('nvim')
-function! GenerateATags()
-    call atags#generate()
-endfunction
 
-" update ctags file
-nmap <leader>ut :call GenerateATags()<CR>
 
 " commmand to start indexers and generate new tags
 function! s:StartIDE()
-    call plug#load('atags.vim')
-    " Generate tags everytime a file is being written.
-    autocmd BufWritePost * call GenerateATags()
-    call GenerateATags()
+    call system('ctags .')
     call plug#load('YouCompleteMe')
+    :TagbarOpen
+    :NERDTreeFind
 endfunction
+
 command StartIDE call s:StartIDE()
 
-let g:atags_build_commands_list = [
-    \"ctags -R --c++-kinds=+p --fields=+iaSl --extra=+q --links=yes --python-kinds=-i -f tags.tmp",
-    \"mv -f tags.tmp tags"
-    \]
-endif
