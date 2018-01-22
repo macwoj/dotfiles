@@ -5,3 +5,4 @@ choco install notepadplusplus.install -y
 choco install putty -y
 choco install sysinternals -y
 ```
+freecommander.com/en/summary/
