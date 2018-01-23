@@ -4,5 +4,6 @@ choco install 7zip.install -y
 choco install notepadplusplus.install -y
 choco install putty -y
 choco install sysinternals -y
+choco install sumatrapdf -y
 ```
 http://freecommander.com/en/summary/
