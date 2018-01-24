@@ -6,5 +6,7 @@ choco install putty.install -y
 choco install sysinternals -y
 choco install sumatrapdf.install -y
 choco install qbittorrent -y
+choco install firefox -y
+choco install chrome -y
 ```
 http://freecommander.com/en/summary/
