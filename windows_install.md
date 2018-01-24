@@ -5,5 +5,6 @@ choco install notepadplusplus.install -y
 choco install putty.install -y
 choco install sysinternals -y
 choco install sumatrapdf.install -y
+choco install qbittorrent -y
 ```
 http://freecommander.com/en/summary/
