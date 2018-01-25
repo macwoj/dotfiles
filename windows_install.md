@@ -1,4 +1,6 @@
+https://chocolatey.org/
 ```powershell
+choco install vlc -y
 choco install git -y
 choco install 7zip.install -y
 choco install notepadplusplus.install -y
