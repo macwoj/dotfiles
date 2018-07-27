@@ -16,7 +16,6 @@ set backspace=indent,eol,start "allow backspace
 set hlsearch "highlight search
 set incsearch "incremental search
 set hidden "allow buffer hiding wihtout saving or prompt
-set shortmess=a "rm the press enter message on startup if theres something wrong with setup
 " map \ to leader char
 let mapleader = "\\"
 " remove annoying commment inserts
@@ -64,10 +63,11 @@ endif
 " Use the same symbols as TextMate for tabstops and EOLs
 set list
 set listchars=tab:▸\ ,trail:.
-
-" jump to the beginning/end of enclosing scope
-map [[ [{
-map ]] ]}
+" \l toggles showing eol chars
+" nmap <leader>l :set list!<CR>
+" Invisible character colors
+"highlight NonText guifg=#4a4a59
+"highlight SpecialKey guifg=#4a4a59
 
 " use system cliboard
 set clipboard=unnamed
@@ -78,28 +78,15 @@ endif
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
-
-" python setup
-let g:python_host_prog = '~/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
-
+call plug#begin('~/.vim/plugged')
 " setup plugins
-if has("gui_win32")
-  " Windows swap error fix
-  set directory=.,$TEMP
-  call plug#begin('~/vimfiles/plugged')
-else
-  call plug#begin('~/.vim/plugged')
-endif
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'vim-scripts/LargeFile'
-    Plug 'mileszs/ack.vim'
     Plug 'altercation/vim-colors-solarized'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'jeffkreeftmeijer/vim-numbertoggle'
     Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle','NERDTreeFind'] }
-    Plug 'airblade/vim-gitgutter'
     Plug 'majutsushi/tagbar'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'sgur/ctrlp-extensions.vim'
@@ -109,14 +96,29 @@ endif
     Plug 'tpope/vim-repeat'
     Plug 'easymotion/vim-easymotion'
     Plug 'tomtom/tcomment_vim'
-    Plug 'Valloric/YouCompleteMe', { 'on': [] ,'do': './install.py --clang-completer'}
+    Plug 'Valloric/YouCompleteMe', { 'on': [] }
     Plug 'terryma/vim-multiple-cursors'
     Plug 'chrisbra/csv.vim', {'for': 'csv' }
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+    " Plug 'jeaye/color_coded'
+    Plug 'rhysd/vim-clang-format', { 'on': [] }
 "    Plug 'edkolev/tmuxline.vim'
     Plug 'craigemery/vim-autotag'
+    Plug 'dyng/ctrlsf.vim'
+if has('nvim')
+    " Plug 'fntlnz/atags.vim'
+endif
 call plug#end()
 
+" setup python support using virtenv
+if has('nvim')
+    let g:python_host_prog = '/opt/bb/bin/python'
+    let g:python3_host_prog = '/opt/bb/bin/python3'
+endif
+
+"**************************************************************************
 " ctrlp
+"**************************************************************************
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>m :CtrlPMixed<CR>
 nmap <leader>r :CtrlPMRU<CR>
@@ -126,7 +128,7 @@ let g:ctrlp_max_depth = 100 " The maximum depth of a directory tree to recurse i
 let g:ctrlp_follow_symlinks = 1 " follow but ignore looped internal symlinks to avoid duplicates.
 let g:ctrlp_reuse_window = 'netrw\|help\|quickfix'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '.*\.orig\|00deps\|.*llcalc_work.*\|\.(git|hg|svn)$',
+  \ 'dir':  'refroot\|build\|.*\.orig\|00deps\|.*llcalc_work.*\|\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|o|a|d|dd|sundev1|linux|orig)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -148,11 +150,10 @@ nmap <F8> :TagbarToggle<CR>
 autocmd FileType tagbar setlocal nocursorline nocursorcolumn nonumber
 
 " dispatch shortcut
-nmap <leader>d :Dispatch make -f %<CR>
+nmap <leader>d :Dispatch make
 " add the path to builds from directories other than current working dir, the
 " build needs to echo this
 set errorformat+=%DEntering\ dir\ '%f',%XLeaving\ dir
-set errorformat+=%Zplink\ error:\ %m
 " toggle word wrap
 nmap <leader>w :set wrap!<CR>
 
@@ -163,7 +164,6 @@ vnoremap <leader>fx :!xmllint --format -<CR>
 " format json
 nmap <leader>fj :%!python -m json.tool<CR>
 vnoremap <leader>fj :!python -m json.tool<CR>
-
 
 " change the default EasyMotion shading to something more readable with
 " Solarized
@@ -203,6 +203,21 @@ let g:tmuxline_preset = {
 "      \,'c'    : '#W'
 
 "**************************************************************************
+" vim-autotag
+"**************************************************************************
+" let g:autotagDisabled = 1
+
+"**************************************************************************
+" nerdcommenter
+"**************************************************************************
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'start'
+" do not rm spaces since we are commenting at first line
+let g:NERDRemoveExtraSpaces = 0
+
+"**************************************************************************
 " gitgutter
 "**************************************************************************
 " turn off vim-gitgutter by default
@@ -210,27 +225,41 @@ let g:gitgutter_enabled = 0
 
 """""""" YouCompleteMe
 let g:ycm_filetype_whitelist = { 'cpp': 1, 'python': 1 }
-let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_show_diagnostics_ui = 1
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf_global.py'
+let g:ycm_extra_conf_globlist = ['.ycm_extra_conf.py','!*refroot/*']
 
-" let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+"SETTINGS---------------------------------------
 nmap <F2> :YcmCompleter GoTo<CR>
 nmap <F3> :YcmCompleter GoToDeclaration<CR>
 nmap <F4> :YcmCompleter GoToDefinition<CR>
 
 "**************************************************************************
-" StartIDE
+" atags.vim
 "**************************************************************************
-
+if has('nvim')
 
 " commmand to start indexers and generate new tags
 function! s:StartIDE()
     call system('ctags .')
+    " Generate tags everytime a file is being written.
+    call plug#load('vim-clang-format')
     call plug#load('YouCompleteMe')
     :TagbarOpen
-    :NERDTreeFind
+    :NERDTreeToggle
 endfunction
-
 command StartIDE call s:StartIDE()
 
+function! s:FClangFormat()
+    vi{:ClangFormat
+endfunction
+command FClangFormat call s:FClangFormat()
+
+" let g:atags_build_commands_list = [
+"     \"ctags -R --languages=+C++,C,Python,Make --c++-kinds=+p --fields=+iaSl --extra=+q --links=yes --python-kinds=-i -f tags.tmp",
+"     \"mv -f tags.tmp tags",
+"     \]
+endif
+"Information on the following setting can be found with
+":help set
